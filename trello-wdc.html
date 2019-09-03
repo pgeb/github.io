@@ -85,7 +85,7 @@
                 const selectorsettings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": `https://api.trello.com/1/batch/?urls=/boards/${cd.board}/lists&key=${cd.key}&token=${cd.token}`,
+                    "url": "https://api.trello.com/1/batch/?urls=/boards/${cd.board}/lists&key=${cd.key}&token=${cd.token}",
                     "method": "GET",
                 }
 
@@ -93,7 +93,7 @@
                     let batch = [];
                     let data = [];
                     for (list of response[0][200]) {
-                        batch.push(`/lists/${list.id}/cards`);
+                        batch.push("/lists/${list.id}/cards");
                     }
                     for (list of response[0][200]) {
                         data.push({
@@ -102,7 +102,7 @@
                             cards: [],
                         })
                     }
-                    const url = `https://api.trello.com/1/batch/?urls=${batch.join(',')}&key=${cd.key}&token=${cd.token}`;
+                    const url = "https://api.trello.com/1/batch/?urls=${batch.join(',')}&key=${cd.key}&token=${cd.token}";
                     getCards(cd, url, data, table, doneCallback);
                 });
             }
@@ -129,10 +129,10 @@
                                 labels: labels.join(', '),
                                 comments: [],
                             })
-                            batch.push(`/cards/${card.id}/actions`);
+                            batch.push("/cards/${card.id}/actions");
                         }
                     }
-                    const url = `https://api.trello.com/1/batch/?urls=${batch.join(',')}&key=${cd.key}&token=${cd.token}`;
+                    const url = "https://api.trello.com/1/batch/?urls=${batch.join(',')}&key=${cd.key}&token=${cd.token}";
                     getComments(cd, url, data, table, doneCallback)
                 });
             }
